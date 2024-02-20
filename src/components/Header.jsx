@@ -109,7 +109,7 @@ const Header = () => {
          <h3 className="name">shaikh anas</h3>
          <p className="role">studen</p>
          <div className="flex-btn">
-            <Link to="/logout" className="option-btn">Logout</Link>
+            <Link to="/" className="option-btn">Logout</Link>
             <Link to="/profile" className="btn">view profile</Link>
          </div>
       </div>

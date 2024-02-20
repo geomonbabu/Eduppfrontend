@@ -11,6 +11,8 @@ import Register from './components/Register';
 import Contact from './components/Contact';
 import Courses from './components/Courses';
 import About from './components/About';
+import PlayList from './components/PlayList';
+import WatchVideo from './components/WatchVideo';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path='/teachers' element={<Teachers/>}/>
         <Route path='/teachersprofile' element={<TeacherProfile/>}/>
         <Route path='/home' element={<Home/>}/>
+        <Route path='/playlist' element={<PlayList/>}/>
+        <Route path='/watchvideo' element={<WatchVideo/>}/>
       </Routes>
       </BrowserRouter>
     </div>

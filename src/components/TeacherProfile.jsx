@@ -39,7 +39,7 @@ const TeacherProfile = () => {
          <span>10 videos</span>
       </div>
       <h3 className="title">complete HTML tutorial</h3>
-      <Link to="playlist.html" className="inline-btn">view playlist</Link>
+      <Link to="/playlist" className="inline-btn">view playlist</Link>
    </div>
 
    <div className="box">
@@ -48,7 +48,7 @@ const TeacherProfile = () => {
          <span>10 videos</span>
       </div>
       <h3 className="title">complete CSS tutorial</h3>
-      <Link to="playlist.html" className="inline-btn">view playlist</Link>
+      <Link to="/playlist" className="inline-btn">view playlist</Link>
    </div>
 
    <div className="box">
@@ -57,7 +57,7 @@ const TeacherProfile = () => {
          <span>10 videos</span>
       </div>
       <h3 className="title">complete javascript tutorial</h3>
-      <Link to="playlist.html" className="inline-btn">view playlist</Link>
+      <Link to="/playlist" className="inline-btn">view playlist</Link>
    </div>
 
    <div className="box">
@@ -66,7 +66,7 @@ const TeacherProfile = () => {
          <span>10 videos</span>
       </div>
       <h3 className="title">complete Boostrap tutorial</h3>
-      <Link to="playlist.html" className="inline-btn">view playlist</Link>
+      <Link to="/playlist" className="inline-btn">view playlist</Link>
    </div>
 
 </div>
