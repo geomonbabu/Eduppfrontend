@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
+import { Link } from 'react-router-dom'
 
 const WatchVideo = () => {
   return (
@@ -25,7 +26,7 @@ const WatchVideo = () => {
       </div>
    </div>
    <form action="" method="post" clasName="flex">
-      <Link to="playlist.html" clasName="inline-btn">view playlist</Link>
+      <Link to="/playlist" clasName="inline-btn">view playlist</Link>
       <button><i clasName="far fa-heart"></i><span>like</span></button>
    </form>
    <p clasName="description">
