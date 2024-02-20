@@ -22,11 +22,11 @@ function App() {
         <Route path='/courses' element={<Courses/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/login' element={<Login/>}/>
+        <Route path='/' element={<Login/>}/>
         <Route path='/update' element={<Update/>}/>
         <Route path='/teachers' element={<Teachers/>}/>
         <Route path='/teachersprofile' element={<TeacherProfile/>}/>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/home' element={<Home/>}/>
       </Routes>
       </BrowserRouter>
     </div>
