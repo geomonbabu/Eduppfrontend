@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
+import { Link } from 'react-router-dom'
 
 const Teachers = () => {
   return (
@@ -20,7 +21,7 @@ const Teachers = () => {
    <div className="box offer">
       <h3>become a tutor</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, itaque ipsam fuga ex et aliquam.</p>
-      <a href="register.html" className="inline-btn">get started</a>
+      <Link to="/register" className="inline-btn">get started</Link>
    </div>
 
    <div className="box">
@@ -34,7 +35,7 @@ const Teachers = () => {
       <p>total playlists : <span>4</span></p>
       <p>total videos : <span>18</span></p>
       <p>total likes : <span>1208</span></p>
-      <a href="teacher_profile.html" className="inline-btn">view profile</a>
+      <Link to="/teachersprofile" className="inline-btn">view profile</Link>
    </div>
 
    <div className="box">
@@ -48,7 +49,7 @@ const Teachers = () => {
       <p>total playlists : <span>4</span></p>
       <p>total videos : <span>18</span></p>
       <p>total likes : <span>1208</span></p>
-      <a href="teacher_profile.html" className="inline-btn">view profile</a>
+      <Link to="/teachersprofile" className="inline-btn">view profile</Link>
    </div>
 
    <div className="box">
@@ -62,7 +63,7 @@ const Teachers = () => {
       <p>total playlists : <span>4</span></p>
       <p>total videos : <span>18</span></p>
       <p>total likes : <span>1208</span></p>
-      <a href="teacher_profile.html" className="inline-btn">view profile</a>
+      <Link to="/teachersprofile" className="inline-btn">view profile</Link>
    </div>
 
    <div className="box">
@@ -76,7 +77,7 @@ const Teachers = () => {
       <p>total playlists : <span>4</span></p>
       <p>total videos : <span>18</span></p>
       <p>total likes : <span>1208</span></p>
-      <a href="teacher_profile.html" className="inline-btn">view profile</a>
+      <Link to="/teachersprofile" className="inline-btn">view profile</Link>
    </div>
 
    <div className="box">
@@ -90,7 +91,7 @@ const Teachers = () => {
       <p>total playlists : <span>4</span></p>
       <p>total videos : <span>18</span></p>
       <p>total likes : <span>1208</span></p>
-      <a href="teacher_profile.html" className="inline-btn">view profile</a>
+      <Link to="/teachersprofile" className="inline-btn">view profile</Link>
    </div>
 
    <div className="box">
@@ -104,7 +105,7 @@ const Teachers = () => {
       <p>total playlists : <span>4</span></p>
       <p>total videos : <span>18</span></p>
       <p>total likes : <span>1208</span></p>
-      <a href="teacher_profile.html" className="inline-btn">view profile</a>
+      <Link to="/teachersprofile" className="inline-btn">view profile</Link>
    </div>
 
    <div className="box">
@@ -118,7 +119,7 @@ const Teachers = () => {
       <p>total playlists : <span>4</span></p>
       <p>total videos : <span>18</span></p>
       <p>total likes : <span>1208</span></p>
-      <a href="teacher_profile.html" className="inline-btn">view profile</a>
+      <Link to="/teachersprofile" className="inline-btn">view profile</Link>
    </div>
 
 </div>

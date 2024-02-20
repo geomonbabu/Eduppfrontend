@@ -1,13 +1,17 @@
 import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+  const navigate = useNavigate()
+  const login=()=>{
+    navigate("/")
+  }
+
   return (
     <div>
-        <Header />
-        <section className="form-container">
-
+        <section className="form-container align-center">
 <form action="" method="post" enctype="multipart/form-data">
    <h3>register now</h3>
    <p>your name <span>*</span></p>
@@ -20,7 +24,8 @@ const Register = () => {
    <input type="password" name="c_pass" placeholder="confirm your password" required  maxLength="20" className="box" />
    <p>select profile <span>*</span></p>
    <input type="file" accept="image/*" required className="box" />
-   <input type="submit" value="register new" name="submit" className="btn" />
+   <input type="submit" value="register new" name="submit" className="btn" onClick={login}/>
+   <input type="submit" value="Login" name="submit" className="btn" onClick={login}/>
 </form>
 
 </section>
