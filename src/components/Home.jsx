@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Courses from './Courses'
 import Footer from './Footer'
 import Header from './Header'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Home = () => {
+   const [input,setInput] = new useState(
+      {             
+      "userId":sessionStorage.getItem("userid")
+      }
+)
+console.log(sessionStorage.getItem("userid"))
+const Navigate=()=> useNavigate() 
+if(!sessionStorage.getItem("userid")){
+   Navigate('/')
+   console.log("first")
+}
+else{
   return (
     <div>
         <Header />
@@ -64,5 +76,5 @@ const Home = () => {
     </div>
   )
 }
-
+}
 export default Home
