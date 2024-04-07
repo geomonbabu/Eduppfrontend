@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
+import axios from 'axios'
 
 const Profile = () => {
+   const [input,setInput] = new useState(
+      {             
+      "_id":sessionStorage.getItem("userid")
+      }
+  )
+  const [data, setData] = new useState([])
+  const getData = () => {
+      axios.post("http://localhost:3001/api/eduapp/viewprofile",input).then(
+          (response) => {
+              setData(response.data)
+              console.log(response.data)
+          }
+      )
+  }
+  useEffect(() => { getData() }, [])
   return (
     <div>
 <Header/>
@@ -13,13 +29,18 @@ const Profile = () => {
 
    <div className="info">
 
-      <div className="user">
-         <img src="../public/images/pic-1.jpg" alt="" />
-         <h3>shaikh anas</h3>
+   {
+      data.map(
+        (values,index) => {
+            return <div className="user">
+         <img src={values.profileimage} alt="" />
+         <h3>{values.name}</h3>
          <p>student</p>
-         <Link href="update.html" className="inline-btn">update profile</Link>
+         <Link to="/update" className="inline-btn">update profile</Link>
       </div>
-   
+        }
+      )
+   }
       <div className="box-container">
    
          <div className="box">

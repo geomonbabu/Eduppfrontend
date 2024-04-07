@@ -1,7 +1,23 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Header = () => {
+  const [input,setInput] = new useState(
+    {             
+    "_id":sessionStorage.getItem("userid")
+    }
+)
+const [data, setData] = new useState([])
+const getData = () => {
+    axios.post("http://localhost:3001/api/eduapp/viewprofile",input).then(
+        (response) => {
+            setData(response.data)
+            console.log(response.data)
+        }
+    )
+}
+useEffect(() => { getData() }, [])
    let toggleBtn = document.getElementById('toggle-btn');
    const [darkMode, setDarkMode] = useState(localStorage.getItem('dark-mode') === 'enabled');
   const [profileActive, setProfileActive] = useState(false);
@@ -84,6 +100,11 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []); 
+  const navigate = useNavigate()
+  const logout=()=>{
+    sessionStorage.setItem("userid"," ")
+    navigate('/')
+  }
   return (
     <div>
         <header className="header">
@@ -103,17 +124,21 @@ const Header = () => {
          <div id="user-btn" className="fas fa-user" onClick={handleUserBtnClick}></div>
          <div id="toggle-btn" className="fas fa-sun" onClick={handleToggleClick}></div>
       </div>
-
-      <div className="profile">
-         <img src="images/pic-1.jpg" className="image" alt="" />
-         <h3 className="name">shaikh anas</h3>
+{
+      data.map(
+        (values,index) => {
+            return <div className="profile">
+         <img src={values.profileimage} className="image" alt="" />
+         <h3 className="name">{values.name}</h3>
          <p className="role">studen</p>
          <div className="flex-btn">
-            <Link to="/" className="option-btn">Logout</Link>
+            <button onclick={logout} className="option-btn" value="Logout" />
             <Link to="/profile" className="btn">view profile</Link>
          </div>
       </div>
-
+       }
+       )
+       }
    </section>
 
 </header>   
@@ -123,13 +148,16 @@ const Header = () => {
    <div id="close-btn">
       <i className="fas fa-times"></i>
    </div>
-
-   <div className="profile">
-      <img src="images/pic-1.jpg" className="image" alt=""/>
-      <h3 className="name">shaikh anas</h3>
+   {
+      data.map(
+        (values,index) => {
+            return <div className="profile">
+      <img src={values.profileimage} className="image" alt=""/>
+      <h3 className="name">{values.name}</h3>
       <p className="role">studen</p>
    </div>
-
+        })
+      }
    <nav className="navbar">
       <Link to="/home"><i className="fas fa-home"></i><span>home</span></Link>
       <Link to="/about"><i className="fas fa-question"></i><span>about</span></Link>

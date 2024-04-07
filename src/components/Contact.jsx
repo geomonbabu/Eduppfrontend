@@ -9,7 +9,7 @@ const Contact = () => {
         <Header />
         <section className="contact">
 
-<div className="row">
+       <div className="row">
 
    <div className="image">
       <img src="images/contact-img.svg" alt="" />
