@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 
 const Header = () => {
+  if(!sessionStorage.getItem("userid")){
+    navigate('/')
+  }
   const [input,setInput] = new useState(
     {             
     "_id":sessionStorage.getItem("userid")
@@ -102,7 +105,7 @@ useEffect(() => { getData() }, [])
   }, []); 
   const navigate = useNavigate()
   const logout=()=>{
-    sessionStorage.setItem("userid"," ")
+    sessionStorage.removeItem("userid");
     navigate('/')
   }
   return (
@@ -128,11 +131,11 @@ useEffect(() => { getData() }, [])
       data.map(
         (values,index) => {
             return <div className="profile">
-         <img src={values.profileimage} className="image" alt="" />
+         <img src={`http://localhost:3001/${values.profileimage}`} alt="" style={{ maxWidth: '100px', maxHeight: '100px' }} />
          <h3 className="name">{values.name}</h3>
          <p className="role">studen</p>
          <div className="flex-btn">
-            <button onclick={logout} className="option-btn" value="Logout" />
+            <input type='submit' onClick={logout} className="btn" value="Logout" />
             <Link to="/profile" className="btn">view profile</Link>
          </div>
       </div>
@@ -151,8 +154,8 @@ useEffect(() => { getData() }, [])
    {
       data.map(
         (values,index) => {
-            return <div className="profile">
-      <img src={values.profileimage} className="image" alt=""/>
+   return <div className="profile">
+      <img src={`http://localhost:3001/${values.profileimage}`} alt="" style={{ maxWidth: '100px', maxHeight: '100px' }}/>
       <h3 className="name">{values.name}</h3>
       <p className="role">studen</p>
    </div>

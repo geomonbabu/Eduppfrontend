@@ -71,7 +71,6 @@ else{
 </div>
 
 </section>
-<Courses />
 <Footer />
     </div>
   )

@@ -1,9 +1,38 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+
 
 const WatchVideo = () => {
+   const [input, setInput] = useState({
+      'userId':sessionStorage.getItem("userid"),
+      'comment':'',
+   })
+   const inputHandler = (event) => {
+      setInput({ ...input, [event.target.name]: event.target.value });
+  }
+  const readvalues=()=>{
+   console.log(input)
+   axios.post("http://localhost:3001/api/eduapp/addcomment",input).then(
+       (Response)=>{
+         console.log(Response.data.status)
+         if(Response.data.status=='success'){
+            alert('comment added successfully')
+         }
+       }
+      )}
+      const [data, setData] = new useState([])
+const getData = () => {
+    axios.get("http://localhost:3001/api/eduapp/viewcomment").then(
+        (response) => {
+            setData(response.data.comment)
+            console.log(response.data)
+        }
+    )
+}
+useEffect(() => { getData() }, [])
   return (
     <div>
         <Header />
@@ -39,94 +68,42 @@ const WatchVideo = () => {
 
 <section clasName="comments">
 
-<h1 clasName="heading">5 comments</h1>
-
-<form action="" clasName="add-comment">
-   <h3>add comments</h3>
-   <textarea name="comment_box" placeholder="enter your comment" required  maxLength="1000" cols="30" rows="10"></textarea>
-   <input type="submit" value="add comment" clasName="inline-btn" name="add_comment" />
-</form>
+<h1 clasName="heading">Total Comments: {data.length}</h1>
+<div class="facebook-comment">
+  <form action="" className="add-comment">
+    <h3>Add a comment</h3>
+    <textarea
+      name="comment"
+      value={input.comment}
+      onChange={inputHandler}
+      placeholder="Write a comment..."
+      required
+      maxLength="500"
+      className="comment-box"
+    ></textarea>
+    <button type="submit" className="btn" name="add_comment" onClick={readvalues} style={{ width: '10%',height:'50px' }}>
+      Post
+    </button>
+  </form>
+</div>
 
 <h1 clasName="heading">user comments</h1>
 
 <div clasName="box-container">
-
-   <div clasName="box">
+{
+      data.map(
+        (values,index) => {
+  return<div clasName="box">
       <div clasName="user">
-         <img src="images/pic-1.jpg" alt="" />
+      <img src={`http://localhost:3001/${values.userId.profileimage}`} alt="" style={{ maxWidth: '50px', maxHeight: '40px' }}/>
          <div>
-            <h3>shaikh anas</h3>
-            <span>22-10-2022</span>
+            <h2>{values.userId.name}</h2>
+            <span>{values.timestamp}</span>
          </div>
       </div>
-      <div clasName="comment-box">this is a comment form shaikh anas</div>
-      <form action="" clasName="flex-btn">
-         <input type="submit" value="edit comment" name="edit_comment" clasName="inline-option-btn" />
-         <input type="submit" value="delete comment" name="delete_comment" clasName="inline-delete-btn" />
-      </form>
+      <div clasName="comment-box"><h2>{values.comment}</h2></div>
    </div>
-
-   <div clasName="box">
-      <div clasName="user">
-         <img src="images/pic-2.jpg" alt="" />
-         <div>
-            <h3>john deo</h3>
-            <span>22-10-2022</span>
-         </div>
-      </div>
-      <div clasName="comment-box">awesome tutorial!
-         keep going!</div>
-   </div>
-
-   <div clasName="box">
-      <div clasName="user">
-         <img src="images/pic-3.jpg" alt="" />
-         <div>
-            <h3>john deo</h3>
-            <span>22-10-2022</span>
-         </div>
-      </div>
-      <div clasName="comment-box">amazing way of teaching!
-         thank you so much!
-      </div>
-   </div>
-
-   <div clasName="box">
-      <div clasName="user">
-         <img src="images/pic-4.jpg" alt="" />
-         <div>
-            <h3>john deo</h3>
-            <span>22-10-2022</span>
-         </div>
-      </div>
-      <div clasName="comment-box">loved it, thanks for the tutorial!</div>
-   </div>
-
-   <div clasName="box">
-      <div clasName="user">
-         <img src="images/pic-5.jpg" alt="" />
-         <div>
-            <h3>john deo</h3>
-            <span>22-10-2022</span>
-         </div>
-      </div>
-      <div clasName="comment-box">this is what I have been looking for! thank you so much!</div>
-   </div>
-
-   <div clasName="box">
-      <div clasName="user">
-         <img src="images/pic-2.jpg" alt="" />
-         <div>
-            <h3>john deo</h3>
-            <span>22-10-2022</span>
-         </div>
-      </div>
-      <div clasName="comment-box">thanks for the tutorial!
-
-         how to download source code file?
-      </div>
-   </div>
-
+        })}
 </div>
 
 </section>

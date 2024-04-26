@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link , Navigate } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
 
 const Profile = () => {
+
+   // Check if userid is not found in sessionStorage
+   if (!sessionStorage.getItem("userid")) {
+     // Navigate to the login page
+     Navigate('/'); // Replace '/login' with the actual path of your login page
+   }
    const [input,setInput] = new useState(
       {             
       "_id":sessionStorage.getItem("userid")
@@ -33,7 +39,7 @@ const Profile = () => {
       data.map(
         (values,index) => {
             return <div className="user">
-         <img src={values.profileimage} alt="" />
+         <img src={`http://localhost:3001/${values.profileimage}`} alt="" />
          <h3>{values.name}</h3>
          <p>student</p>
          <Link to="/update" className="inline-btn">update profile</Link>
